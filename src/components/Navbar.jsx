@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
     return (
@@ -10,8 +11,9 @@ export default function Navbar(props) {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <a className="nav-link active" aria-current="page" href="/">Home</a>
-                    <a className="nav-link" href="/">Features</a>
+                    {/* change 'a' to 'Link' and href to 'to' to make only those links re-render the elements that need to be re-rendered (navbar doesnt need to be re-rendered on every click) */}
+                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/standings">Standings</Link>
                     <a className="nav-link" href="/">Pricing</a>
                     <a className="nav-link" href="/">Enabled</a>
                 </div>
