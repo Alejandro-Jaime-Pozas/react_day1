@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
 
+
+
+// THIS IS NOT A FINISHED FUNCTIONAL CLASS
+////////////////////////////////////////////
+
+
+
+
 // class components dont take useState nor useEffect
 
 export default class RacersClass extends Component {

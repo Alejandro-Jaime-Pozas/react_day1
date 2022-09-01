@@ -14,7 +14,7 @@ export default function Navbar(props) {
                     {/* change 'a' to 'Link' and href to 'to' to make only those links re-render the elements that need to be re-rendered (navbar doesnt need to be re-rendered on every click) */}
                     <Link className="nav-link" to="/">Home</Link>
                     <Link className="nav-link" to="/standings">Standings</Link>
-                    <a className="nav-link" href="/">Pricing</a>
+                    <Link className="nav-link" to="/register">Register</Link>
                     <a className="nav-link" href="/">Enabled</a>
                 </div>
                 </div>

@@ -18,6 +18,7 @@ export default function Racers(props) {
     // BOTH USEEFFECT AND HANDLERACERSUBMIT USE THE SEASON AND ROUND, BUT USEFFECT ADDITIONALY TAKES IN RACERS, BUT NEITHER OF THE TWO ARE CONNECTED TO EACH OTHER, THEY BRANCH DOWN FROM SEASON, ROUND, AND/OR RACERS STATES
 
     // create an effect -> fn to execute after every render on website fetching api data
+    // IS THIS DIRECTLY CALLING USEFFECT FN? yes
     useEffect(() => {
         console.log('useEffect callback executed')
         fetch(`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
@@ -36,7 +37,7 @@ export default function Racers(props) {
         // Prevent default of refreshing page
         e.preventDefault();
         // Get the value from the form
-        console.log(`This is a new event here is the obj ${e}`)
+        console.log(`This is a new event here is the obj ${e}:`)
         console.log(e)
         let newSeason = e.target.season.value;
         let newRound = e.target.round.value;
