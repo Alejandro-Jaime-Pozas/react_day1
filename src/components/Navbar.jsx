@@ -15,7 +15,9 @@ export default function Navbar(props) {
                     <Link className="nav-link" to="/">Home</Link>
                     <Link className="nav-link" to="/standings">Standings</Link>
                     <Link className="nav-link" to="/register">Register</Link>
-                    <Link className="nav-link" to="/login">Enabled</Link>
+                    <Link className="nav-link" to="/login">Login</Link>
+                    <Link className="nav-link" to="/create_post">Create Post</Link>
+                    <Link className="nav-link" to="/standings" onClick={props.logout} >Logout</Link>
                 </div>
                 </div>
             </div>
