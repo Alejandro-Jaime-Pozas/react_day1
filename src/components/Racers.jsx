@@ -20,11 +20,11 @@ export default function Racers(props) {
     // create an effect -> fn to execute after every render on website fetching api data
     // IS THIS DIRECTLY CALLING USEFFECT FN? yes
     useEffect(() => {
-        console.log('useEffect callback executed')
+        // console.log('useEffect callback executed')
         fetch(`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 let racerStandings = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
                 // console.log(racerStandings)
                 setRacers(racerStandings);
@@ -37,8 +37,8 @@ export default function Racers(props) {
         // Prevent default of refreshing page
         e.preventDefault();
         // Get the value from the form
-        console.log(`This is a new event here is the obj ${e}:`)
-        console.log(e)
+        // console.log(`This is a new event here is the obj ${e}:`)
+        // console.log(e)
         let newSeason = e.target.season.value;
         let newRound = e.target.round.value;
         // console.log(newSeason, newRound);

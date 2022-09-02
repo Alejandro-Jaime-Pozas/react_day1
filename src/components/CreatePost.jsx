@@ -1,9 +1,9 @@
 // summary: 
 // user must be logged in
 // user inputs a title, body, clicks submit 
-    // once submitted, post is created by fetching api flask app 
-    // need to fetch api create post fn with the input data and push to the db through the api 
-    // when finished redirect the user to home page
+// once submitted, post is created by fetching api flask app 
+// need to fetch api create post fn with the input data and push to the db through the api 
+// when finished redirect the user to home page
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -19,17 +19,24 @@ export default function CreatePost(props) {
         navigate('/login')
     };
 
-    // handle the create post submission here: get form values . post the created post by fetching api . flash success msg & navigate to home page
+    // handle the create post submission here: get form values . get the user token? since login is required? . post the created post by fetching api . flash success msg & navigate to home page
     const handleSubmit = e => {
-        console.log('STILL NEED TO FINISH THIS')
+        console.log('Creating post')
         // prevent the default of re-rendering the page
         e.preventDefault();
         // get the create post title and body inputs
         let title = e.target.title.value;
         let body = e.target.body.value;
 
+        console.log(localStorage.getItem('token'))
+        console.log(localStorage.getItem('expiration'))
+        
+        let token = localStorage.getItem('token')
+        console.log("Bearer " + token)
+
         // fetch api create post /api/posts? 
         let myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer " + token);
         myHeaders.append("Content-Type", "application/json");
 
         let formData = JSON.stringify({
@@ -55,7 +62,6 @@ export default function CreatePost(props) {
                     navigate('/')
                 }
             })
-        
     }
 
 
@@ -63,7 +69,7 @@ export default function CreatePost(props) {
         <>
             <h4 className="text-center">Create a New Post</h4>
             {/* need to include a form onSubmit/onClick= to a fn */}
-            <form handleSumbit={handleSubmit} >
+            <form onSubmit={handleSubmit} >
                 <div className="form-group">
 
                     <label htmlFor="title">Title</label>

@@ -8,24 +8,26 @@ export default function Login(props) {
     // make async fn here
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log(e);
+        console.log('Logging in');
         
         let username = e.target.username.value;
         let password = e.target.password.value;
 
         // POSTMAN CODE SNIPPET to get the username and password
         let myHeaders = new Headers();
-        myHeaders.append('Authorization', 'Basic ' + btoa(`${username}:${password}`))
+        myHeaders.append('Authorization', 'Basic ' + btoa(`${username}:${password}`)) // COME BACK TO UNDERSTAND THIS
 
-        let response = await fetch('http://localhost:5000/api/token', {headers:myHeaders}); // come back to understand this
+        let response = await fetch('http://localhost:5000/api/token', {headers:myHeaders}); // COME BACK TO UNDERSTAND THIS
         if (response.ok){
             let data = await response.json();
-            console.log(data)
+            // console.log(data)
             // END POSTMAN CODE SNIPPET - this snippet is shorter than the one shown on postman...
     
             // sotre the token and expiration in localStorage Application
             localStorage.setItem('token', data.token);
+            // console.log(localStorage.getItem('token'))
             localStorage.setItem('expiration', data.token_expiration)
+            // console.log(localStorage.getItem('expiration'))
 
             // set the logged in fn to true
             props.login()
