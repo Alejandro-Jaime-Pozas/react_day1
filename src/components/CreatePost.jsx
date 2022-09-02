@@ -1,5 +1,5 @@
 // summary: 
-    // user must be logged in
+// user must be logged in
 // user inputs a title, body, clicks submit 
     // once submitted, post is created by fetching api flask app 
     // need to fetch api create post fn with the input data and push to the db through the api 
@@ -15,18 +15,47 @@ export default function CreatePost(props) {
         // so for this..how check state? state is in App.js, need to allow CreatePost to get props from App.js, and in App.js only show if use logged in...so login method is all in App.js
     let navigate = useNavigate()
     if (props.loggedIn === false){
-        props.flashMessage('You need to be logged in to view this page, please login', 'info')
+        props.flashMessage('You need to be logged in to create a post, please login', 'info')
         navigate('/login')
     };
 
     // handle the create post submission here: get form values . post the created post by fetching api . flash success msg & navigate to home page
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         console.log('STILL NEED TO FINISH THIS')
         // prevent the default of re-rendering the page
         e.preventDefault();
+        // get the create post title and body inputs
         let title = e.target.title.value;
         let body = e.target.body.value;
 
+        // fetch api create post /api/posts? 
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let formData = JSON.stringify({
+            "title": title,
+            "body": body
+        });
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formData,
+            redirect: 'follow'
+          };
+
+        fetch('http://localhost:5000/api/posts', requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error){ // this checks for the API error that is in intro_to_flask code (400 error)
+                    console.error(data.error)
+                } else{
+                    // console.log(data)
+                    props.flashMessage('You have created a new post successfully', 'success')
+                    navigate('/')
+                }
+            })
+        
     }
 
 

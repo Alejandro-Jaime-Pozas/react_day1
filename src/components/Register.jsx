@@ -45,7 +45,6 @@ export default function Register(props) {
                         navigate('/')
                     }
                 })
-
         }
     }
 
