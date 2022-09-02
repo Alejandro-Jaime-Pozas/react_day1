@@ -37,8 +37,6 @@ export default function Login(props) {
             props.flashMessage('Your username/password are incorrect', 'danger');
             navigate('/');
         }
-
-
     }
 
     return (

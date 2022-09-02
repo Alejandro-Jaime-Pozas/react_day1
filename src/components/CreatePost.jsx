@@ -19,14 +19,22 @@ export default function CreatePost(props) {
         navigate('/login')
     };
 
+    // handle the create post submission here: get form values . post the created post by fetching api . flash success msg & navigate to home page
+    const handleSubmit = async e => {
+        console.log('STILL NEED TO FINISH THIS')
+        // prevent the default of re-rendering the page
+        e.preventDefault();
+        let title = e.target.title.value;
+        let body = e.target.body.value;
 
-    // need to check 
+    }
+
 
     return (
         <>
             <h4 className="text-center">Create a New Post</h4>
             {/* need to include a form onSubmit/onClick= to a fn */}
-            <form >
+            <form handleSumbit={handleSubmit} >
                 <div className="form-group">
 
                     <label htmlFor="title">Title</label>
