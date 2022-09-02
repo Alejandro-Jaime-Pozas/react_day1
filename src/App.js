@@ -17,7 +17,7 @@ function App() {
     // set a state for an alert msg. if there is a msg, show its content (str) if not, dont show message
     const [message, setMessage] = useState(null); 
     const [category, setCategory] = useState(null); 
-    const [loggedIn, setLoggedIn] = useState((localStorage.getItem('token') && new Date(localStorage.getItem('expiration')) > now) ? true : false) // this gives us the date 
+    const [loggedIn, setLoggedIn] = useState((localStorage.getItem('token') && new Date(localStorage.getItem('expiration')) > now) ? true : false) // gets token and expiration from Application>local Storage
     
     // inserting a flash msg and category to a fn so that it can be pushed as a prop to other js files
     const flashMessage = (message, category) => {
@@ -48,7 +48,7 @@ function App() {
                     <Route path='/standings' element={<Racers />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
                     <Route path='/login' element={<Login flashMessage={flashMessage} login={login} />} />
-                    <Route path='/create_post' element={<CreatePost />} />
+                    <Route path='/create_post' element={<CreatePost loggedIn={loggedIn} flashMessage={flashMessage} />} />
                 </Routes>
                 {/* <ButtonCounter />
                 <Racers  /> */}

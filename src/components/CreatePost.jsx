@@ -6,11 +6,19 @@
     // when finished redirect the user to home page
 
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function CreatePost(props) {
 
     // need to check if user login = true, then render page (check state of user login)
+        // so for this..how check state? state is in App.js, need to allow CreatePost to get props from App.js, and in App.js only show if use logged in...so login method is all in App.js
+    let navigate = useNavigate()
+    if (props.loggedIn === false){
+        props.flashMessage('You need to be logged in to view this page, please login', 'info')
+        navigate('/login')
+    };
+
 
     // need to check 
 

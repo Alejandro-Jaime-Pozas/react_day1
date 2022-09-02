@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // useNavigate used to redirect to another page
 
 export default function Login(props) {
 
@@ -23,7 +23,7 @@ export default function Login(props) {
             console.log(data)
             // END POSTMAN CODE SNIPPET - this snippet is shorter than the one shown on postman...
     
-            // sotre the token and expiration in localStorage
+            // sotre the token and expiration in localStorage Application
             localStorage.setItem('token', data.token);
             localStorage.setItem('expiration', data.token_expiration)
 
@@ -31,7 +31,7 @@ export default function Login(props) {
             props.login()
     
             // flash success msg and nagivate back to home page
-            props.flashMessage('You have successfully logged in', 'success');
+            props.flashMessage('You have logged in successfully', 'success');
             navigate('/');
         } else {
             props.flashMessage('Your username/password are incorrect', 'danger');
@@ -43,7 +43,7 @@ export default function Login(props) {
 
     return (
         <>
-        <h4 className="text-center">Register</h4>
+        <h4 className="text-center">Login</h4>
         <form onSubmit={handleSubmit}>
             <div className="form-group">
 
